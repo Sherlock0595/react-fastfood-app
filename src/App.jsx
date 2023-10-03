@@ -28,6 +28,8 @@ function App() {
             <PizzaBlock title="Суши-Пицца" price="430" />
             <PizzaBlock title="Ассорти" price="470" />
             <PizzaBlock title="Баунти" price="870" />
+            <PizzaBlock title="Сникерс" price="770" />
+            <PizzaBlock title="Марс" price="777" />
           </div>
         </div>
       </div>
