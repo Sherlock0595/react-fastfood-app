@@ -1,6 +1,7 @@
+import { useState } from "react"
 
 function PizzaBlock(props) {
-
+    const typesChange = ["тонкое", "традиционное"] = useState(0)
 
 
     return (
