@@ -1,7 +1,7 @@
 import { useState } from "react"
 
 function PizzaBlock({ title, price, imageUrl, types, sizes }) {
-    // const typesChange = ["тонкое", "традиционное"] = useState(0)
+    const typesNames = ["тонкое", "традиционное"] 
 
 
     return (
@@ -14,12 +14,13 @@ function PizzaBlock({ title, price, imageUrl, types, sizes }) {
             <h4 className="pizza-block__title">{title}</h4>
             <div className="pizza-block__selector">
                 <ul>
-                    <li className="active">тонкое</li>
-                    <li>традиционное</li>
+                {types.map((type)=>(
+                    <li>{typesNames[type]}</li>
+                ))}
                 </ul>
                 <ul>
                     {sizes.map((size) => (
-                        <li>{size}</li>
+                        <li>{size} см.</li>
                     ))}
                 </ul>
             </div>
