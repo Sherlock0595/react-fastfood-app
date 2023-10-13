@@ -31,6 +31,7 @@ function PizzaBlock({ title, price, imageUrl, types, sizes }) {
                 <ul>
                     {types.map((typeId) => (
                         <li
+                            key={typeId}
                             onClick={() => onClickTypes(typeId)}
                             className={activeType === typeId ? 'active' : ""}>
                             {typesNames[typeId]}
@@ -41,6 +42,7 @@ function PizzaBlock({ title, price, imageUrl, types, sizes }) {
                 <ul>
                     {sizes.map((size, i) => (
                         <li
+                            key={i}
                             onClick={() => onClickSizes(i)}
                             className={sizeChange === i ? 'active' : ""}>{size} см.
                         </li>
@@ -49,7 +51,8 @@ function PizzaBlock({ title, price, imageUrl, types, sizes }) {
             </div>
             <div className="pizza-block__bottom">
                 <div className="pizza-block__price">от {price} ₽</div>
-                <button onClick={onClickCount} className="button button--outline button--add">
+                <button onClick={onClickCount}
+                    className="button button--outline button--add">
                     <svg
                         width="12"
                         height="12"
