@@ -10,10 +10,10 @@ function Sort() {
         setIsVisible(!isVisible)
     }
 
-    // const onclickSelectedSort = (i) => {
-    //     setSelectedSort(i)
-    //     setIsVisible(false)
-    // }
+    const onclickSelectedSort = (i) => {
+        setSelectedSort(i)
+        setIsVisible(false)
+    }
 
     return (
         <div className="sort">
