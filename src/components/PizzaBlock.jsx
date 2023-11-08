@@ -7,17 +7,17 @@ function PizzaBlock({ title, price, imageUrl, types, sizes }) {
     const [sizeChange, setSizeChange] = useState(0)
     const [Count, setCount] = useState(0)
 
-    // const onClickCount = () => {
-    //     setCount(Count + 1)
-    // }
+    const onClickCount = () => {
+        setCount(Count + 1)
+    }
 
-    // const onClickTypes = (index) => {
-    //     setActiveType(index)
-    // }
+    const onClickTypes = (index) => {
+        setActiveType(index)
+    }
 
-    // const onClickSizes = (index) => {
-    //     setSizeChange(index)
-    // }
+    const onClickSizes = (index) => {
+        setSizeChange(index)
+    }
 
     return (
         <div className="pizza-block">
