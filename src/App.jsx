@@ -11,15 +11,15 @@ function App() {
   const [items, setitems] = useState([]);
   const [isLoading, setIsLoading] = useState(true)
 
-  // useEffect(() => {
-  //   fetch('https://654b7b775b38a59f28ef27f5.mockapi.io/items')
-  //     .then((res) => res.json())
-  //     .then((items) => {
-  //       setitems(items);
-  //       setIsLoading(false);
-  //     });
+  useEffect(() => {
+    fetch('https://654b7b775b38a59f28ef27f5.mockapi.io/items')
+      .then((res) => res.json())
+      .then((items) => {
+        setitems(items);
+        setIsLoading(false);
+      });
 
-  // }, [])
+  }, [])
 
 
   return (
