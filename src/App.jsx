@@ -3,7 +3,9 @@ import React from 'react'
 import Header from './components/Header'
 import Home from './pages/Home'
 import NotFound from './pages/NotFound'
+import Cart from './pages/Cart'
 import './scss/app.scss'
+import { Route, Routes } from 'react-router'
 
 
 function App() {
@@ -12,7 +14,11 @@ function App() {
       <Header />
       <div className="content">
         <div className="container">
-          <Home />
+          <Routes>
+            <Route path='/' element={<Home />}/>
+            <Route path='/cart' element={<Cart />}/>
+            <Route path='*' element={<NotFound />}/>
+          </Routes>
         </div>
       </div>
     </div>
