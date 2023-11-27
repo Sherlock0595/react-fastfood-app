@@ -5,11 +5,6 @@ function PizzaBlock({ title, price, imageUrl, types, sizes }) {
 
     const [activeType, setActiveType] = useState(0)
     const [sizeChange, setSizeChange] = useState(0)
-    const [Count, setCount] = useState(0)
-
-    const onClickCount = () => {
-        setCount(Count + 1)
-    }
 
     const onClickTypes = (index) => {
         setActiveType(index)
@@ -52,7 +47,7 @@ function PizzaBlock({ title, price, imageUrl, types, sizes }) {
                 </div>
                 <div className="pizza-block__bottom">
                     <div className="pizza-block__price">от {price} ₽</div>
-                    <button onClick={onClickCount}
+                    <button 
                         className="button button--outline button--add">
                         <svg
                             width="12"
@@ -67,7 +62,7 @@ function PizzaBlock({ title, price, imageUrl, types, sizes }) {
                             />
                         </svg>
                         <span>Добавить</span>
-                        <i>{Count}</i>
+                        <i>{0}</i>
                     </button>
                 </div>
             </div>
