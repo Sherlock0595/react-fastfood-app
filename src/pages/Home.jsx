@@ -9,6 +9,7 @@ import Skeleton from '../components/PizzaBlock/Skeleton'
 function Home() {
     const [items, setitems] = useState([]);
     const [isLoading, setIsLoading] = useState(true)
+    const [categoryId, setCategoryId] = useState(0)
 
     useEffect(() => {
         fetch('https://654b7b775b38a59f28ef27f5.mockapi.io/items')
@@ -25,7 +26,7 @@ function Home() {
     return (
         <div className="container">
             <div className="content__top">
-                <Categories />
+                <Categories value={categoryId} onClickCategory={(i) => setCategoryId(i)} />
                 <Sort />
             </div>
             <h2 className="content__title">Все пиццы</h2>
@@ -39,7 +40,7 @@ function Home() {
                     ))
                 }
             </div>
-            </div>
+        </div>
     )
 }
 
