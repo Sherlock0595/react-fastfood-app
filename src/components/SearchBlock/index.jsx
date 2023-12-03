@@ -4,8 +4,13 @@ import search from '../../assets/img/search.svg'
 import across from '../../assets/img/across.svg'
 
 function Search({ searchValue, setSearchValue }) {
+
     const ChangeSearch = (e) => {
         setSearchValue(e.target.value)
+    }
+
+    const DeleteSearh = () => {
+        setSearchValue('')
     }
     return (
         <div className={styles.inputSearch}>
@@ -18,11 +23,12 @@ function Search({ searchValue, setSearchValue }) {
                 placeholder='Поиск пиццы...'
                 value={searchValue}
             />
-            <img
+            {searchValue && (<img
+                onClick={DeleteSearh}
                 className={styles.across}
                 src={across}
                 alt="across"
-            />
+            />)}
         </div>
     )
 }
