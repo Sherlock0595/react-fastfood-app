@@ -6,22 +6,24 @@ import Sort from '../components/Sort'
 import PizzaBlock from '../components/PizzaBlock'
 import Skeleton from '../components/PizzaBlock/Skeleton'
 
-function Home() {
+function Home({ searchValue }) {
     const [items, setitems] = useState([]);
     const [isLoading, setIsLoading] = useState(true)
     const [categoryId, setCategoryId] = useState(0)
 
+
     const [sortType, setSortType] = useState({
-        name: "популярности", 
+        name: "популярности",
         sortProperty: "rating",
     })
 
     useEffect(() => {
         setIsLoading(true)
+        const category = categoryId > 0 ? `category=${categoryId}` : ''
+        const search = searchValue ? `&search=${searchValue}` : ''
+
         fetch(
-            `https://654b7b775b38a59f28ef27f5.mockapi.io/items?${
-        categoryId > 0 ? `category=${categoryId}` : ''
-            }&sortBy=${sortType.sortProperty}&order=desc`,
+            `https://654b7b775b38a59f28ef27f5.mockapi.io/items?${category}&sortBy=${sortType.sortProperty}&order=desc${search}`,
 
         )
             .then((res) => res.json())
@@ -30,7 +32,7 @@ function Home() {
                 setIsLoading(false);
             });
 
-    }, [categoryId, sortType])
+    }, [categoryId, sortType, searchValue])
 
 
 
