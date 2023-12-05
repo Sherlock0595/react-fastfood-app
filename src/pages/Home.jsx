@@ -5,11 +5,13 @@ import Categories from '../components/Categories'
 import Sort from '../components/Sort'
 import PizzaBlock from '../components/PizzaBlock'
 import Skeleton from '../components/PizzaBlock/Skeleton'
+import Pagination from '../components/PaginationBlock/Index'
 
 function Home({ searchValue }) {
     const [items, setitems] = useState([]);
     const [isLoading, setIsLoading] = useState(true)
     const [categoryId, setCategoryId] = useState(0)
+    const [currentPage, setCurrentPage] = useState(1)
 
 
     const [sortType, setSortType] = useState({
@@ -23,7 +25,7 @@ function Home({ searchValue }) {
         const search = searchValue ? `&search=${searchValue}` : ''
 
         fetch(
-            `https://654b7b775b38a59f28ef27f5.mockapi.io/items?${category}&sortBy=${sortType.sortProperty}&order=desc${search}`,
+            `https://654b7b775b38a59f28ef27f5.mockapi.io/items?page=${currentPage}&limit=4${category}&sortBy=${sortType.sortProperty}&order=desc${search}`,
 
         )
             .then((res) => res.json())
@@ -32,7 +34,7 @@ function Home({ searchValue }) {
                 setIsLoading(false);
             });
 
-    }, [categoryId, sortType, searchValue])
+    }, [categoryId, sortType, searchValue, currentPage])
 
 
 
@@ -53,6 +55,7 @@ function Home({ searchValue }) {
                     ))
                 }
             </div>
+            <Pagination onChangePage={(number => setCurrentPage(number))} />
         </div>
     )
 }
