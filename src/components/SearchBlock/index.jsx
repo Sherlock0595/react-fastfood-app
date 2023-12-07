@@ -2,9 +2,11 @@ import React from 'react'
 import styles from '../SearchBlock/Search.module.scss'
 import search from '../../assets/img/search.svg'
 import across from '../../assets/img/across.svg'
+import { SearchContext } from '../../App'
 
-function Search({ searchValue, setSearchValue }) {
-
+function Search() {
+    const {searchValue, setSearchValue } = React.useContext(SearchContext)
+    
     const ChangeSearch = (e) => {
         setSearchValue(e.target.value)
     }
