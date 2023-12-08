@@ -29,7 +29,7 @@ function Home() {
         const search = searchValue ? `&search=${searchValue}` : ''
 
         fetch(
-            `https://654b7b775b38a59f28ef27f5.mockapi.io/items?page=${currentPage}&limit=4${category}&sortBy=${sortType.sortProperty}&order=desc${search}`,
+            `https://654b7b775b38a59f28ef27f5.mockapi.io/items?page=${currentPage}&limit=4&${category}&sortBy=${sortType.sortProperty}&order=desc${search}`,
 
         )
             .then((res) => res.json())
