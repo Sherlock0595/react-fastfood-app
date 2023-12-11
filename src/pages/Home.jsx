@@ -7,21 +7,25 @@ import PizzaBlock from '../components/PizzaBlock'
 import Skeleton from '../components/PizzaBlock/Skeleton'
 import Pagination from '../components/PaginationBlock/Index'
 import { SearchContext } from '../App'
+import { useDispatch, useSelector } from 'react-redux'
+import { setCategoryId } from '../redux/features/filterSlice'
 
 
 function Home() {
     const { searchValue, setSearchValue } = React.useContext(SearchContext)
-    
+
     const [items, setitems] = useState([]);
     const [isLoading, setIsLoading] = useState(true)
-    const [categoryId, setCategoryId] = useState(0)
     const [currentPage, setCurrentPage] = useState(1)
 
+    const categoryId = useSelector((state) => state.filter.categoryId)
+    const sort = useSelector((state) => state.filter.sort)
+    const dispath = useDispatch()
 
-    const [sortType, setSortType] = useState({
-        name: "популярности",
-        sortProperty: "rating",
-    })
+
+    const onChangeCategory = (id) => {
+        dispath(setCategoryId(id));
+    }
 
     useEffect(() => {
         setIsLoading(true)
@@ -29,7 +33,7 @@ function Home() {
         const search = searchValue ? `&search=${searchValue}` : ''
 
         fetch(
-            `https://654b7b775b38a59f28ef27f5.mockapi.io/items?page=${currentPage}&limit=4&${category}&sortBy=${sortType.sortProperty}&order=desc${search}`,
+            `https://654b7b775b38a59f28ef27f5.mockapi.io/items?page=${currentPage}&limit=4&${category}&sortBy=${sort.sortProperty}&order=desc${search}`,
 
         )
             .then((res) => res.json())
@@ -38,15 +42,14 @@ function Home() {
                 setIsLoading(false);
             });
 
-    }, [categoryId, sortType, searchValue, currentPage])
-
+    }, [categoryId, sort, searchValue, currentPage])
 
 
     return (
         <div className="container">
             <div className="content__top">
-                <Categories value={categoryId} onClickCategory={(i) => setCategoryId(i)} />
-                <Sort value={sortType} onClickSort={(i) => setSortType(i)} />
+                <Categories value={categoryId} onClickCategory={onChangeCategory} />
+                <Sort />
             </div>
             <h2 className="content__title">Все пиццы</h2>
             <div className="content__items">
