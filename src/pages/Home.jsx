@@ -8,7 +8,6 @@ import Skeleton from '../components/PizzaBlock/Skeleton'
 import Pagination from '../components/PaginationBlock/Index'
 import { SearchContext } from '../App'
 import { useDispatch, useSelector } from 'react-redux'
-import { setCategoryId } from '../redux/features/filterSlice'
 
 
 function Home() {
@@ -20,12 +19,6 @@ function Home() {
 
     const categoryId = useSelector((state) => state.filter.categoryId)
     const sort = useSelector((state) => state.filter.sort)
-    const dispath = useDispatch()
-
-
-    const onChangeCategory = (id) => {
-        dispath(setCategoryId(id));
-    }
 
     useEffect(() => {
         setIsLoading(true)
@@ -48,7 +41,7 @@ function Home() {
     return (
         <div className="container">
             <div className="content__top">
-                <Categories value={categoryId} onClickCategory={onChangeCategory} />
+                <Categories />
                 <Sort />
             </div>
             <h2 className="content__title">Все пиццы</h2>

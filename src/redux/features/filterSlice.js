@@ -5,7 +5,8 @@ const initialState = {
     sort: {
         name: "популярности",
         sortProperty: "rating",
-    }
+    },
+    
 
 }
 
@@ -19,7 +20,9 @@ export const filterSlice = createSlice({
 
         setSort: (state, action) => {
             state.sort = action.payload
-        }
+        },
+
+
     }
 },
 );
