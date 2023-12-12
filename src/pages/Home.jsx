@@ -8,6 +8,7 @@ import Skeleton from '../components/PizzaBlock/Skeleton'
 import Pagination from '../components/PaginationBlock/Index'
 import { SearchContext } from '../App'
 import { useDispatch, useSelector } from 'react-redux'
+import axios from 'axios'
 
 
 function Home() {
@@ -25,13 +26,10 @@ function Home() {
         const category = categoryId > 0 ? `category=${categoryId}` : ''
         const search = searchValue ? `&search=${searchValue}` : ''
 
-        fetch(
-            `https://654b7b775b38a59f28ef27f5.mockapi.io/items?page=${currentPage}&limit=4&${category}&sortBy=${sort.sortProperty}&order=desc${search}`,
-
-        )
-            .then((res) => res.json())
-            .then((items) => {
-                setitems(items);
+        axios
+            .get(`https://654b7b775b38a59f28ef27f5.mockapi.io/items?page=${currentPage}&limit=4&${category}&sortBy=${sort.sortProperty}&order=desc${search}`,)
+            .then((res) => {
+                setitems(res.data);
                 setIsLoading(false);
             });
 
