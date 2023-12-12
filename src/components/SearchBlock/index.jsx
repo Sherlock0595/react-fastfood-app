@@ -2,17 +2,20 @@ import React from 'react'
 import styles from '../SearchBlock/Search.module.scss'
 import search from '../../assets/img/search.svg'
 import across from '../../assets/img/across.svg'
-import { SearchContext } from '../../App'
+import { useDispatch, useSelector } from 'react-redux'
+import { setSearchValue } from '../../redux/features/filterSlice'
+
 
 function Search() {
-    const {searchValue, setSearchValue } = React.useContext(SearchContext)
+   const searchValue= useSelector((state)=>state.filter.searchValue)
+   const dispatch=useDispatch();
     
     const ChangeSearch = (e) => {
-        setSearchValue(e.target.value)
+        dispatch(setSearchValue(e.target.value))
     }
 
     const DeleteSearh = () => {
-        setSearchValue('')
+        dispatch(setSearchValue(''))
     }
     return (
         <div className={styles.inputSearch}>

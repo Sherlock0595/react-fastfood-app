@@ -7,12 +7,10 @@ import Cart from './pages/Cart'
 import './scss/app.scss'
 import { Route, Routes } from 'react-router'
 
-export const SearchContext = React.createContext()
 
 function App() {
-  const [searchValue, setSearchValue] = useState('')
   return (
-    <SearchContext.Provider value={{ searchValue, setSearchValue }}>
+    <>
       <div className="wrapper">
         <Header />
         <div className="content">
@@ -23,7 +21,7 @@ function App() {
           </Routes>
         </div>
       </div>
-    </SearchContext.Provider>
+    </>
 
   )
 }
