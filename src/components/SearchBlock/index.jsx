@@ -1,21 +1,34 @@
-import React from 'react'
+import React, { useCallback, useRef, useState } from 'react'
 import styles from '../SearchBlock/Search.module.scss'
 import search from '../../assets/img/search.svg'
 import across from '../../assets/img/across.svg'
-import { useDispatch, useSelector } from 'react-redux'
+import { useDispatch } from 'react-redux'
 import { setSearchValue } from '../../redux/features/filterSlice'
-
+import debounce from 'lodash.debounce'
 
 function Search() {
-   const searchValue= useSelector((state)=>state.filter.searchValue)
-   const dispatch=useDispatch();
     
+    const [localSearch, setLocalSearch] = useState('')
+    const dispatch = useDispatch();
+
+    const inputRef = useRef();
+
+    const updateInput = useCallback(
+        debounce((str) => {
+            dispatch(setSearchValue(str))
+        }, 1000), []
+    )
+
     const ChangeSearch = (e) => {
-        dispatch(setSearchValue(e.target.value))
+        setLocalSearch(e.target.value)
+        updateInput(e.target.value)
+    
     }
 
     const DeleteSearh = () => {
         dispatch(setSearchValue(''))
+        setLocalSearch('')
+        inputRef.current.focus()
     }
     return (
         <div className={styles.inputSearch}>
@@ -24,11 +37,12 @@ function Search() {
                 alt="search"
             />
             <input
+                ref={inputRef}
                 onChange={ChangeSearch}
                 placeholder='Поиск пиццы...'
-                value={searchValue}
+                value={localSearch}
             />
-            {searchValue && (<img
+            {localSearch && (<img
                 onClick={DeleteSearh}
                 className={styles.across}
                 src={across}

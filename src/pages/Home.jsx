@@ -16,10 +16,11 @@ function Home() {
 
     const [items, setitems] = useState([]);
     const [isLoading, setIsLoading] = useState(true)
-    const [currentPage, setCurrentPage] = useState(1)
+    // const [currentPage, setCurrentPage] = useState(1)
     const searchValue = useSelector((state) => state.filter.searchValue)
     const categoryId = useSelector((state) => state.filter.categoryId)
     const sort = useSelector((state) => state.filter.sort)
+    const currentPage = useSelector((state) => state.filter.currentPage)
 
     useEffect(() => {
         setIsLoading(true)
@@ -53,7 +54,7 @@ function Home() {
                     ))
                 }
             </div>
-            <Pagination onChangePage={(number => setCurrentPage(number))} />
+            <Pagination />
         </div>
     )
 }
