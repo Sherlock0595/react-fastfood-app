@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react'
 
-
+import qs from 'qs'
+import { useNavigate } from 'react-router-dom'
 import Categories from '../components/Categories'
 import Sort from '../components/Sort'
 import PizzaBlock from '../components/PizzaBlock'
@@ -13,10 +14,11 @@ import axios from 'axios'
 
 function Home() {
 
+    const navigate = useNavigate()
 
     const [items, setitems] = useState([]);
     const [isLoading, setIsLoading] = useState(true)
-    // const [currentPage, setCurrentPage] = useState(1)
+
     const searchValue = useSelector((state) => state.filter.searchValue)
     const categoryId = useSelector((state) => state.filter.categoryId)
     const sort = useSelector((state) => state.filter.sort)
@@ -36,6 +38,14 @@ function Home() {
 
     }, [categoryId, sort, searchValue, currentPage])
 
+    useEffect(() => {
+        const queryString = qs.stringify({
+            sort: sort.sortProperty,
+            currentPage,
+            categoryId
+        })
+        navigate(`?${queryString}`)
+    }, [categoryId, sort.sortProperty, searchValue, currentPage])
 
     return (
         <div className="container">
