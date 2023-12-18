@@ -8,9 +8,6 @@ function Pagination() {
 
     const currentPage = useSelector((state) => state.filter.currentPage)
     const dispath = useDispatch();
-    const some = (e) => {
-        currentPage.e.selected
-    }
     const onChangePage = (number) => {
         dispath(setCurrentPage(number))
 
