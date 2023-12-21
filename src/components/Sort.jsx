@@ -25,8 +25,7 @@ function Sort() {
     useEffect(() => {
         const handleClickOutside = (event) => {
             if (!event.composedPath().includes(sortRef.current)) {
-                setIsVisible(false)
-                console.log('click out');
+                setIsVisible(false) 
             }
         }
 
