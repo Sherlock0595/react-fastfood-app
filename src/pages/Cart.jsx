@@ -3,6 +3,7 @@ import { Link } from 'react-router-dom'
 import { useSelector, useDispatch } from "react-redux"
 import CartItem from '../components/CartItem'
 import { clearItems } from '../redux/features/cartSlice'
+import CartEmty from '../components/SearchBlock/CartEmty'
 
 
 
@@ -18,6 +19,10 @@ function Cart() {
     }
 
   };
+
+  if (!totalPrice) {
+    return <CartEmty />
+  }
 
   return (
     <div className='container container--cart'>
