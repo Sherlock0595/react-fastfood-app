@@ -16,13 +16,13 @@ import { sortList } from '../components/Sort'
 
 function Home() {
 
-    // const isSearch = React.useRef(false)
-    // const isMounted = React.useRef(false);
+    const isSearch = React.useRef(false)
+    const isMounted = React.useRef(false);
 
-    // const navigate = useNavigate();
-    // const dispatch = useDispatch();
-    // const [items, setitems] = useState([]);
-    // const [isLoading, setIsLoading] = useState(true)
+    const navigate = useNavigate();
+    const dispatch = useDispatch();
+    const [items, setitems] = useState([]);
+    const [isLoading, setIsLoading] = useState(true)
 
     const searchValue = useSelector((state) => state.filter.searchValue)
     const categoryId = useSelector((state) => state.filter.categoryId)
