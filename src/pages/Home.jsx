@@ -1,4 +1,4 @@
-import React, { useEffect} from 'react'
+import React, { useEffect } from 'react'
 
 import qs from 'qs'
 
@@ -84,7 +84,7 @@ function Home() {
 
     const boxPizzas = items.map((obj) => (<PizzaBlock key={obj.id} {...obj} />))
     const skeleton = [...new Array(6)].map((_, index) => <Skeleton key={index} />)
-    
+
     return (
         <div className="container">
             <div className="content__top">
@@ -92,12 +92,22 @@ function Home() {
                 <Sort />
             </div>
             <h2 className="content__title">Все пиццы</h2>
-            <div className="content__items">
 
-                {status === 'loading' ?
-                    skeleton : boxPizzas
-                }
-            </div>
+            {status === 'error' ? (
+                <div className="cart cart--empty">
+                    <h2>Питер Паркер не довез пиццы <icon>😕</icon></h2>
+                    <p>
+                        Вероятней всего, ошибка на сервере.<br />
+                        Просим сохранять спокойствие и попробовать позднее
+                    </p>
+                </div>) :
+
+                (<div className="content__items">
+                    {status === 'loading' ? skeleton : boxPizzas}
+                </div>
+                )
+            }
+
             <Pagination />
         </div>
     )
