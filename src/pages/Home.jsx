@@ -8,9 +8,9 @@ import Sort from '../components/Sort'
 import PizzaBlock from '../components/PizzaBlock'
 import Skeleton from '../components/PizzaBlock/Skeleton'
 import Pagination from '../components/PaginationBlock/Index'
-import { setFilters } from '../redux/features/filterSlice'
+import { selectFilter, setFilters } from '../redux/features/filterSlice'
 import { useDispatch, useSelector } from 'react-redux'
-import { fetchPizzas } from '../redux/features/pizzaSlice'
+import { fetchPizzas, selectPizzaData } from '../redux/features/pizzaSlice'
 import { sortList } from '../components/Sort'
 
 function Home() {
@@ -21,12 +21,10 @@ function Home() {
     const navigate = useNavigate();
     const dispatch = useDispatch();
 
-    const { items, status } = useSelector((state) => state.pizza)
+    const { items, status } = useSelector(selectPizzaData)
 
-    const searchValue = useSelector((state) => state.filter.searchValue)
-    const categoryId = useSelector((state) => state.filter.categoryId)
-    const sort = useSelector((state) => state.filter.sort)
-    const currentPage = useSelector((state) => state.filter.currentPage)
+    const { searchValue, categoryId, sort, currentPage } = useSelector(selectFilter)
+
 
     const fetchPizza = () => {
         const category = categoryId > 0 ? `category=${categoryId}` : ''
