@@ -45,12 +45,12 @@ function Home() {
             const sortProperty = params.sortProperty || 'rating';
             const sort = sortList.find((obj) => obj.sortProperty === sortProperty)
 
-            // dispatch(
-            //     setFilters({
-            //         ...params,
-            //         sort,
-            //     })
-            // );
+            dispatch(
+                setFilters({
+                    ...params,
+                    sort,
+                })
+            );
 
             isSearch.current = false;
         }
