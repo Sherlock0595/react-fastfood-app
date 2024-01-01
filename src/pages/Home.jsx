@@ -30,13 +30,13 @@ function Home() {
         const category = categoryId > 0 ? `category=${categoryId}` : ''
         const search = searchValue ? `&search=${searchValue}` : ''
 
-        // dispatch(fetchPizzas({
-        //     category,
-        //     search,
-        //     sort,
-        //     currentPage,
-        //     searchValue
-        // }))
+        dispatch(fetchPizzas({
+            category,
+            search,
+            sort,
+            currentPage,
+            searchValue
+        }))
     }
     //Проверка URL-параметров, если был первый рендер и сохраняем в Redux
     useEffect(() => {
@@ -45,12 +45,12 @@ function Home() {
             const sortProperty = params.sortProperty || 'rating';
             const sort = sortList.find((obj) => obj.sortProperty === sortProperty)
 
-            // dispatch(
-            //     setFilters({
-            //         ...params,
-            //         sort,
-            //     })
-            // );
+            dispatch(
+                setFilters({
+                    ...params,
+                    sort,
+                })
+            );
 
             isSearch.current = false;
         }
