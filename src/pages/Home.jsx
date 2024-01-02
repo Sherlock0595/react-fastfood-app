@@ -30,13 +30,13 @@ function Home() {
         const category = categoryId > 0 ? `category=${categoryId}` : ''
         const search = searchValue ? `&search=${searchValue}` : ''
 
-        dispatch(fetchPizzas({
-            category,
-            search,
-            sort,
-            currentPage,
-            searchValue
-        }))
+        // dispatch(fetchPizzas({
+        //     category,
+        //     search,
+        //     sort,
+        //     currentPage,
+        //     searchValue
+        // }))
     }
     //Проверка URL-параметров, если был первый рендер и сохраняем в Redux
     useEffect(() => {
