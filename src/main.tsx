@@ -5,12 +5,20 @@ import { BrowserRouter } from 'react-router-dom'
 import { store } from './redux/app/store.js'
 import { Provider } from 'react-redux'
 
-ReactDOM.createRoot(document.getElementById('root')).render(
-  // <React.StrictMode>
+const rootElem = document.getElementById('root')
+
+if (rootElem) {
+  const root = ReactDOM.createRoot(rootElem)
+
+  root.render(
+    // <React.StrictMode>
     <BrowserRouter>
       <Provider store={store}>
         <App />
       </Provider>
     </BrowserRouter>
-  // </React.StrictMode>
-)
+    // </React.StrictMode>
+  );
+}
+
+
