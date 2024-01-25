@@ -1,10 +1,20 @@
-import { useState } from "react"
+import React, { useState } from "react"
 import { useSelector, useDispatch } from "react-redux"
 import { addItem, selectCartItemById } from "../../redux/features/cartSlice"
 
 const typesNames = ["тонкое", "традиционное"]
 
-function PizzaBlock({ id, title, price, imageUrl, types, sizes }) {
+type IpizzaBlock = {
+    id: string,
+    title: string,
+    price: number,
+    imageUrl: string,
+    types: number[],
+    sizes: number[],
+}
+
+const PizzaBlock: React.FC<IpizzaBlock> = ({ id, title, price, imageUrl, types, sizes }) => {
+
     const dispatch = useDispatch()
     const cartItem = useSelector(selectCartItemById(id))
     const addedCount = cartItem ? cartItem.count : 0;
