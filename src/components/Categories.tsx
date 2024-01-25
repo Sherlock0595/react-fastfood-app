@@ -2,12 +2,14 @@ import React, { useState } from 'react'
 import { selectFilter, setCategoryId } from '../redux/features/filterSlice'
 import { useDispatch, useSelector } from 'react-redux'
 
-function Categories() {
+const Categories: React.FC = () => {
+
     const listCategories = ['Все', 'Мясные', 'Вегетарианская', 'Гриль', 'Острые', 'Закрытые']
     const { categoryId } = useSelector(selectFilter)
     const dispath = useDispatch()
 
-    const onChangeCategory = (id) => {
+    //Проверить при типизации Redux
+    const onChangeCategory = (id: number) => {
         dispath(setCategoryId(id));
     }
 
