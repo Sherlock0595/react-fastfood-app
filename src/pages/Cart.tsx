@@ -7,11 +7,11 @@ import CartEmty from '../components/SearchBlock/CartEmty'
 
 
 
-function Cart() {
+const Cart: React.FC = () => {
   const dispatch = useDispatch()
   const { items, totalPrice } = useSelector(selectCartItem)
 
-  const totalCount = items.reduce((sum, item) => sum + item.count, 0)
+  const totalCount = items.reduce((sum: number, item: any) => sum + item.count, 0)
 
   const onclickClear = () => {
     if (window.confirm('Вы подверждаете очитску корзины?')) {
@@ -46,7 +46,7 @@ function Cart() {
         </div>
         <div className="content__cart__items">
           {
-            items.map(item =>
+            items.map((item: any) =>
               <CartItem key={item.id} {...item} />)
           }
 

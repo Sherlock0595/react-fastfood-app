@@ -13,7 +13,7 @@ import { useDispatch, useSelector } from 'react-redux'
 import { fetchPizzas, selectPizzaData } from '../redux/features/pizzaSlice'
 import { sortList } from '../components/Sort'
 
-function Home() {
+const Home: React.FC = () => {
 
     const isSearch = React.useRef(false)
     const isMounted = React.useRef(false);
@@ -30,13 +30,15 @@ function Home() {
         const category = categoryId > 0 ? `category=${categoryId}` : ''
         const search = searchValue ? `&search=${searchValue}` : ''
 
-        dispatch(fetchPizzas({
-            category,
-            search,
-            sort,
-            currentPage,
-            searchValue
-        }))
+        dispatch(
+            // @ts-ignore
+            fetchPizzas({
+                category,
+                search,
+                sort,
+                currentPage,
+                searchValue
+            }))
     }
     //Проверка URL-параметров, если был первый рендер и сохраняем в Redux
     useEffect(() => {
@@ -80,7 +82,7 @@ function Home() {
         isMounted.current = true;
     }, [categoryId, sort.sortProperty, searchValue, currentPage])
 
-    const boxPizzas = items.map((obj) => (<PizzaBlock key={obj.id} {...obj} />))
+    const boxPizzas = items.map((obj: any) => (<PizzaBlock key={obj.id} {...obj} />))
     const skeleton = [...new Array(6)].map((_, index) => <Skeleton key={index} />)
 
     return (
@@ -93,7 +95,7 @@ function Home() {
 
             {status === 'error' ? (
                 <div className="cart cart--empty">
-                    <h2>Питер Паркер не довез пиццы <icon>😕</icon></h2>
+                    <h2>Питер Паркер не довез пиццы <span>😕</span></h2>
                     <p>
                         Вероятней всего, ошибка на сервере.<br />
                         Просим сохранять спокойствие и попробовать позднее
