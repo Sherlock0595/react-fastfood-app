@@ -26,7 +26,7 @@ const Home: React.FC = () => {
     const { searchValue, categoryId, sort, currentPage } = useSelector(selectFilter)
 
 
-    const fetchPizza = () => {
+    const fetchPizza = (): void => {
         const category = categoryId > 0 ? `category=${categoryId}` : ''
         const search = searchValue ? `&search=${searchValue}` : ''
 

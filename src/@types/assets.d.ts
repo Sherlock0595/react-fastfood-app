@@ -1,5 +1,6 @@
 declare module "*.svg" {
-    const content: string;
+  const content: string;
+
     export default content;
   }
 
@@ -9,6 +10,6 @@ declare module "*.svg" {
   }
 
   declare module "*.scss" {
-    const content: any;
+    const content: { [className: string]: string };
     export default content;
   }
