@@ -8,4 +8,6 @@ export const store = configureStore({
         cart,
         pizza,
     },
-})
+});
+
+export type RootState = ReturnType<typeof store.getState>
