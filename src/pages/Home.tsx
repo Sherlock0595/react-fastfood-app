@@ -9,9 +9,10 @@ import PizzaBlock from '../components/PizzaBlock'
 import Skeleton from '../components/PizzaBlock/Skeleton'
 import Pagination from '../components/PaginationBlock/Index'
 import { selectFilter, setFilters } from '../redux/features/filterSlice'
-import { useDispatch, useSelector } from 'react-redux'
+import { useSelector } from 'react-redux'
 import { fetchPizzas, selectPizzaData } from '../redux/features/pizzaSlice'
 import { sortList } from '../components/Sort'
+import { useAppDispatch } from '../redux/app/store'
 
 const Home: React.FC = () => {
 
@@ -19,7 +20,7 @@ const Home: React.FC = () => {
     const isMounted = React.useRef(false);
 
     const navigate = useNavigate();
-    const dispatch = useDispatch();
+    const dispatch = useAppDispatch();
 
     const { items, status } = useSelector(selectPizzaData)
 
@@ -31,13 +32,11 @@ const Home: React.FC = () => {
         const search = searchValue ? `&search=${searchValue}` : ''
 
         dispatch(
-            // @ts-ignore
             fetchPizzas({
                 category,
                 search,
                 sort,
                 currentPage,
-                searchValue
             }))
     }
     //Проверка URL-параметров, если был первый рендер и сохраняем в Redux
