@@ -1,6 +1,6 @@
 import React, { useEffect, useRef, useState } from 'react'
 import { useSelector, useDispatch } from 'react-redux'
-import { ISort, selectSort, setSort } from '../redux/features/filterSlice'
+import { ISort, ISortProperty, selectSort, setSort } from '../redux/features/filterSlice'
 
 // type SortItem = {
 //     name: string,
@@ -8,9 +8,9 @@ import { ISort, selectSort, setSort } from '../redux/features/filterSlice'
 // }
 
 export const sortList: ISort[] = [
-    { name: "популярности", sortProperty: "rating" },
-    { name: "цене", sortProperty: "price" },
-    { name: "алфавиту", sortProperty: "title" }
+    { name: "популярности", sortProperty: ISortProperty.RATING },
+    { name: "цене", sortProperty: ISortProperty.PRICE },
+    { name: "алфавиту", sortProperty: ISortProperty.TITLE }
 ]
 const Sort: React.FC = () => {
     const sortRef = React.useRef<HTMLDivElement>(null)

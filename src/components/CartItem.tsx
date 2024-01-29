@@ -18,7 +18,7 @@ const CartItem: React.FC<ICartItem> = ({ id, title, type, price, size, count, im
     const onclickPlus = () => {
         dispatch(addItem({
             id,
-        }))
+        } as ICartItem))
     };
 
     const onclickMinus = () => {

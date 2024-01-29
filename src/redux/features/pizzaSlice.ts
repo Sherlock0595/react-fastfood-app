@@ -3,16 +3,25 @@ import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
 import { RootState } from "../app/store";
 
 
-export const fetchPizzas = createAsyncThunk<IPizzaItem[], Record<string, string>>('pizza/fetchPizzas', async (params) => {
-    const { category, search, sort, currentPage } = params;
-    const { data } = await axios.get<IPizzaItem[]>(
-        `https://654b7b775b38a59f28ef27f5.mockapi.io/items?page=${currentPage}&limit=4&${category}&sortBy=${sort.sortProperty}&order=desc${search}`,);
+export type ISearchPizzaParams = {
+    category: string,
+    search: string,
+    sort:  { sortProperty: string },
+    currentPage: number
+};
 
-    return data;
-});
+export const fetchPizzas = createAsyncThunk<IPizzaItem[], ISearchPizzaParams>(
+    'pizza/fetchPizzas',
+    async (params) => {
+        const { category, search, sort, currentPage } = params;
+        const { data } = await axios.get<IPizzaItem[]>(
+            `https://654b7b775b38a59f28ef27f5.mockapi.io/items?page=${currentPage}&limit=4&${category}&sortBy=${sort.sortProperty}&order=desc${search}`,);
+
+        return data;
+    });
 
 
- export enum Status {
+export enum Status {
     LOADING = 'loading',
     LOADED = 'loaded',
     ERROR = 'error',
