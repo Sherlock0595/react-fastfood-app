@@ -1,7 +1,21 @@
 import { createSlice } from '@reduxjs/toolkit'
 import { RootState } from '../app/store';
 
-const initialState = {
+ export type ISort = {
+    name: string,
+    sortProperty: "rating" | "price" | "title",
+}
+
+
+interface IfilterSliceState {
+    categoryId: number;
+    sort: ISort;
+    searchValue: string;
+    currentPage: number;
+}
+
+
+const initialState: IfilterSliceState = {
     categoryId: 0,
     sort: {
         name: "популярности",

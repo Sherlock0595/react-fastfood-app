@@ -1,13 +1,13 @@
 import React, { useEffect, useRef, useState } from 'react'
 import { useSelector, useDispatch } from 'react-redux'
-import { selectSort, setSort } from '../redux/features/filterSlice'
+import { ISort, selectSort, setSort } from '../redux/features/filterSlice'
 
-type SortItem = {
-    name: string,
-    sortProperty: string,
-}
+// type SortItem = {
+//     name: string,
+//     sortProperty: string,
+// }
 
-export const sortList: SortItem[] = [
+export const sortList: ISort[] = [
     { name: "популярности", sortProperty: "rating" },
     { name: "цене", sortProperty: "price" },
     { name: "алфавиту", sortProperty: "title" }
@@ -23,7 +23,7 @@ const Sort: React.FC = () => {
         setIsVisible(!isVisible)
     }
 
-    const onclickSelectedSort = (obj: SortItem) => {
+    const onclickSelectedSort = (obj: ISort) => {
         dispatch(setSort(obj))
         setIsVisible(false)
     }
