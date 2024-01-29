@@ -9,7 +9,7 @@ const Categories: React.FC = () => {
     const dispath = useDispatch()
 
     //Проверить при типизации Redux
-    const onChangeCategory = (id: number) => {
+    const onChangeCategory = (id: number): void => {
         dispath(setCategoryId(id));
     }
 

@@ -19,7 +19,7 @@ const Search: React.FC = () => {
         }, 1000), []
     )
 
-    const ChangeSearch = (e:any) => {
+    const ChangeSearch = (e: React.ChangeEvent<HTMLInputElement>) => {
         setLocalSearch(e.target.value)
         updateInput(e.target.value)
 

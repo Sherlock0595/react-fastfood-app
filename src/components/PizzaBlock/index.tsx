@@ -21,11 +21,11 @@ const PizzaBlock: React.FC<IpizzaBlock> = ({ id, title, price, imageUrl, types, 
     const [activeType, setActiveType] = useState(0)
     const [sizeChange, setSizeChange] = useState(0)
 
-    const onClickTypes = (index) => {
+    const onClickTypes = (index: number) => {
         setActiveType(index)
     }
 
-    const onClickSizes = (index) => {
+    const onClickSizes = (index: number) => {
         setSizeChange(index)
     }
 
