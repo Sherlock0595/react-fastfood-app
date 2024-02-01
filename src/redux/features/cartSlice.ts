@@ -48,7 +48,7 @@ export const cartSlice = createSlice({
             const findItem = state.items.find((obj) => obj.id === action.payload)
 
 
-            if (findItem && findItem.count > 0) {
+            if (findItem && findItem.count > 1) {
                 findItem.count--;
             }
         },
